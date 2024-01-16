@@ -7,7 +7,7 @@ peopleController.getResidents,
   (req, res) => res.status(200).json(res.locals.residents)
 );
 
-router.get('/#name',
+router.get('/:name',
 peopleController.getOneResident,
   (req, res) => res.status(200).json(res.locals.oneResident)
 );

@@ -7,7 +7,7 @@ peopleController.getInstructors,
   (req, res) => res.status(200).json(res.locals.instructors)
 );
 
-router.get('/#name',
+router.get('/:name',
 peopleController.getOneInstructor,
   (req, res) => res.status(200).json(res.locals.oneInstructor)
 );
