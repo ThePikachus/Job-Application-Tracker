@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Resident from "../components/Resident.jsx";
+import Popup from "../components/Popup.jsx";
 
 function MainContainer() {
   const profiles = [
@@ -143,6 +144,7 @@ function MainContainer() {
   const [selectedProfile, setSelectedProfile] = useState(null);
 
   const handleProfileClick = (profile) => {
+    console.log("hello", profile);
     setSelectedProfile(profile);
   };
 

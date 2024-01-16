@@ -8,14 +8,24 @@ function Resident({
   bio,
   pronouns,
   messages,
+  onClick,
 }) {
   const style = {
     backgroundColor: backgroundColor,
     padding: "10px",
-    borderRadius: "10px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    overflow: "hidden",
+    cursor: "pointer",
   };
   return (
-    <div id="Resident" key={key} className="resident-card" style={style}>
+    <div
+      id="Resident"
+      key={key}
+      className="resident-card"
+      onClick={onClick}
+      style={style}
+    >
       <img id="pic" src={picture}></img>
       <h3 id="name">{name}</h3>
       <div id="pronouns">{pronouns}</div>
