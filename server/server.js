@@ -3,8 +3,8 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = 3000;
-const residentsRouter = require("/routers/residentsRouter.js");
-const instructorsRouter = require("/routers/instructorsRouter.js");
+const residentsRouter = require("./routers/residentsRouter.js");
+const instructorsRouter = require("./routers/instructorsRouter.js");
 
 //Parse JSON incoming
 app.use(express.json());

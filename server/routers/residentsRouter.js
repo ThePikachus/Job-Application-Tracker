@@ -11,3 +11,5 @@ router.get('/#name',
 peopleController.getOneResident,
   (req, res) => res.status(200).json(res.locals.oneResident)
 );
+
+module.exports = router;
