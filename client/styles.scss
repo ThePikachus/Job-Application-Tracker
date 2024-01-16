@@ -1,21 +1,8 @@
 .profile-grid {
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-}
-
-.resident {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-#pic {
-  border: solid 2px black;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
 }
 
 .popup-overlay {
@@ -49,4 +36,40 @@
   font-size: 20px;
   cursor: pointer;
   color: white;
+}
+
+.resident {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.resident-card {
+  border: 5px solid white;
+  display: flex;
+  height: 120%;
+}
+
+.resident-card .resident-text {
+  transform: translate(0, 25%);
+  .pronouns {
+    font-style: normal;
+    margin-bottom: 5px;
+  }
+}
+
+.bio {
+  font-style: italic;
+}
+
+.resident #pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 1000px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  box-shadow: 0 0 20px #00000033;
 }

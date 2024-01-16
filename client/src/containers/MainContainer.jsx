@@ -161,7 +161,6 @@ function MainContainer() {
           picture={profile.picture}
           bio={profile.bio}
           pronouns={profile.pronouns}
-          messages={profile.messages}
           onClick={() => handleProfileClick(profile)}
         />
       ))}

@@ -7,7 +7,6 @@ function Resident({
   picture,
   bio,
   pronouns,
-  messages,
   onClick,
 }) {
   const style = {
@@ -19,22 +18,15 @@ function Resident({
     cursor: "pointer",
   };
   return (
-    <div
-      id="Resident"
-      key={key}
-      className="resident-card"
-      onClick={onClick}
-      style={style}
-    >
+    <div className="resident">
       <img id="pic" src={picture}></img>
-      <h3 id="name">{name}</h3>
-      <div id="pronouns">{pronouns}</div>
-      <div id="bio">{bio}</div>
-      <ul id="messages">
-        {messages.map((msg) => (
-          <li>{msg}</li>
-        ))}
-      </ul>
+      <div key={key} className="resident-card" onClick={onClick} style={style}>
+        <div className="resident-text">
+          <h3 id="name">{name}</h3>
+          <div className="pronouns">{pronouns}</div>
+          <div className="bio">{bio}</div>
+        </div>
+      </div>
     </div>
   );
 }

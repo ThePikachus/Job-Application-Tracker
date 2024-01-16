@@ -9,8 +9,12 @@ const Popup = ({ profile, onClose }) => {
           &times;
         </button>
         <h2>{profile.name}</h2>
-        <p>{profile.bio}</p>
-        {/* Add other profile details */}
+        <p className="bio">{profile.bio}</p>
+        <ul className="messages">
+          {profile.messages.map((msg) => (
+            <li>{msg}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
