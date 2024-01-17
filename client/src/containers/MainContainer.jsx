@@ -39,7 +39,7 @@ function MainContainer() {
   };
   return (
     <div id="MainContainer" className="profile-grid">
-      <div className="residents">
+      <div className="residents" id="residents">
         <h1>Residents</h1>
         <div className="residents-grid">
           { residentIsPending ? 'laoding'
@@ -59,10 +59,10 @@ function MainContainer() {
         </div>
       </div>
 
-      <div className="residents">
+      <div className="instructors" id="instructors">
         <h1>Instructors</h1>
-        <div className="residents-grid">
-          {instructorIsPending ? 'laoding'
+        <div className="instructors-grid">
+          {instructorIsPending ? 'loading'
           : instructorIsError 
           ? instructorError 
           : instructorData?.map((profile, index) => (

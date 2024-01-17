@@ -17,13 +17,16 @@ function Resident({
     overflow: "hidden",
     cursor: "pointer",
   };
+
+  if(pronouns !== "") name = name + ` (${pronouns})`;
+  
   return (
     <div className="resident">
       <img id="pic" src={picture} alt="your mom"></img>
       <div key={key} className="resident-card" onClick={onClick} style={style}>
         <div className="resident-text">
           <h3 id="name">{name}</h3>
-          <div className="pronouns">{pronouns}</div>
+          {/* <div className="pronouns">{pronouns}</div> */}
           <div className="bio">{bio}</div>
         </div>
       </div>
