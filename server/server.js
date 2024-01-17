@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 //serve static files and the index.html file
-app.use("/", express.static(path.join(__dirname, "../client")));
+app.use("/", express.static(path.join(__dirname, "../dist")));
 
 app.use("/residents", residentsRouter);
 app.use("/instructors", instructorsRouter);
