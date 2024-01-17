@@ -1,0 +1,198 @@
+#MainContainer .residents-grid {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  grid-row-gap: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#MainContainer .instructors-grid {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(250px, 1fr));
+  gap: 20px;
+  grid-row-gap: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color from its parent */
+  padding: 10px;
+  font-size: large;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.popup-content {
+  width: 40%;
+  height: 40%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 2;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+#MainContainer h1{
+  padding-top: 20px;
+}
+
+.resident,
+.instructor {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.resident-card,
+.instructor-card {
+  border: 5px solid white;
+  display: flex;
+  justify-content: center;
+  height: 120%;
+}
+
+.resident-text,
+.instructor-text {
+  transform: translate(0, 30%);
+  .pronouns {
+    font-style: normal;
+    margin-bottom: 5px;
+  }
+}
+
+.bio {
+  font-style: italic;
+}
+
+.resident #pic,
+.instructor #pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 1000px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  box-shadow: 0 0 20px #00000033;
+}
+
+ul {
+  list-style: none;
+  padding-right: 40px;
+
+  li {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  margin-bottom: 50px;
+}
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: grey;
+}
+
+.taskbar .title {
+  justify-content: flex-start;
+  margin-right: auto;
+}
+
+.taskbar .features {
+  justify-content: space-between;
+}
+
+.congratulation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.congratulation #logo {
+  margin-right: 10px;
+  border-radius: 30%;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  padding: 10px;
+  font-size: large;
+}
+
+button:hover, a:hover {
+  background-color: #555;
+  transition: background-color 0.3s ease;
+}
+
+.commentInput {
+  z-index: 1;
+}
+
+.instructors {
+  text-align: center;
+}
+
+.residents {
+  text-align: center;
+}
+
+.profile-grid {
+  background-color: #007dff;
+  border-radius: 3%;
+}
+
+body {
+  background-color: white;
+}
+
+.editUser {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline: 40px;
+  margin-bottom: 0px;
+}

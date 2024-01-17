@@ -3,6 +3,9 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = 3000;
+const residentsRouter = require("./routers/residentsRouter.js");
+const instructorsRouter = require("./routers/instructorsRouter.js");
+const loginRouter = require("./routers/loginRouter.js");
 
 //Parse JSON incoming
 app.use(express.json());
@@ -12,6 +15,10 @@ app.use(cors({ origin: "*" }));
 
 //serve static files and the index.html file
 app.use("/", express.static(path.join(__dirname, "../client")));
+
+app.use("/residents", residentsRouter);
+app.use("/instructors", instructorsRouter);
+app.use("/login", loginRouter);
 app.get("/", function (req, res) {
   res.sendFile(path.resolve(__dirname, "../client/index.html"));
 });

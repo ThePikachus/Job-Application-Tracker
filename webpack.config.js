@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -29,19 +29,22 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ["style-loader", 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
           },
         ],
       },
     ],
   },
   devServer: {
-    port: 8080,
+    port: 8081,
+    proxy: {
+      "/": "http://localhost:3000",
+    },
   },
 };
