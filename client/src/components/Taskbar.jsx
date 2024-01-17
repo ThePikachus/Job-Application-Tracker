@@ -21,8 +21,8 @@ function Taskbar(props) {
       </div>
       {/* style to have top header on left and residents and instructors on right I have no idea howta do that grid or flux */}
       <div className="features">
-        <button>Residents</button>
-        <button>Instructors</button>
+        <a href='#residents'>Residents</a>
+        <a href='#instructors'>Instructors</a>
         {showUser ? (
           <h2>{user.name}</h2>
         ) : (

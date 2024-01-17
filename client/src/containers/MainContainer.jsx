@@ -42,7 +42,7 @@ function MainContainer() {
   };
   return (
     <div id="MainContainer" className="profile-grid">
-      <div className="residents">
+      <div className="residents" id="residents">
         <h1>Residents</h1>
         <div className="residents-grid">
           {residentList.map((profile, index) => (
@@ -59,9 +59,9 @@ function MainContainer() {
         </div>
       </div>
 
-      <div className="residents">
+      <div className="instructors" id="instructors">
         <h1>Instructors</h1>
-        <div className="residents-grid">
+        <div className="instructors-grid">
           {instructorList.map((profile, index) => (
             <Instructor
               key={index}
