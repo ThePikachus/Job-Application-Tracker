@@ -61,7 +61,7 @@ a {
   color: white;
 }
 
-#MainContainer h1{
+#MainContainer h1 {
   padding-top: 20px;
 }
 
@@ -123,7 +123,7 @@ ul {
   display: flex;
   align-items: center;
   padding: 5px;
-  background-color: grey;
+  background-color: #007dff;
 }
 
 .taskbar .title {
@@ -160,7 +160,8 @@ button {
   font-size: large;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   background-color: #555;
   transition: background-color 0.3s ease;
 }
