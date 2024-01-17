@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { setRender } from "../redux/slices/pageSlice.js";
 
 function Edit() {
   const name = useSelector((state) => state.user.name);
@@ -30,6 +31,7 @@ function Edit() {
 
       if (response.ok) {
         console.log("Post request successful");
+        dispatch(setRender());
       } else {
         console.error("Post request failed");
       }
