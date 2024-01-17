@@ -9,6 +9,9 @@ const Popup = ({ profile, onClose }) => {
     return state.user.name === profile.name;
   });
   console.log("hi", profile);
+
+  if (profile.phrase === "undefined") profile.phrase = " ";
+
   return (
     <div className="popup-overlay">
       <div

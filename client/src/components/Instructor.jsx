@@ -17,6 +17,11 @@ function Instructor({
     overflow: "hidden",
     cursor: "pointer",
   };
+
+  if (bio === "undefined") bio = " ";
+  if (pronouns === "undefined") name = name;
+  else if (pronouns !== "") name = name + ` (${pronouns})`;
+
   return (
     <div className="instructor">
       <img id="pic" src={picture}></img>

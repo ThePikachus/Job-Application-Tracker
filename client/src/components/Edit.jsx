@@ -19,6 +19,7 @@ function Edit() {
       name: name,
     };
     console.log("full edit req body", data);
+
     try {
       const response = await fetch("/login/editUser", {
         method: "POST",
