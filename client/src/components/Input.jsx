@@ -1,8 +1,10 @@
 import React from "react";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 function Input({ name }) {
   const dispatch = useDispatch();
+  const [inputText, setInputText] = useState();
 
   const handlePost = async (e) => {
     e.preventDefault();
