@@ -73,3 +73,37 @@
   border: 1px solid black;
   box-shadow: 0 0 20px #00000033;
 }
+
+ul {
+  list-style: none;
+
+  li {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+  }
+}
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: #555;
+  transition: background-color 0.3s ease;
+}
