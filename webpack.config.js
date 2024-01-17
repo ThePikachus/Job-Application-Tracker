@@ -42,19 +42,10 @@ module.exports = {
     ],
   },
   devServer: {
-    allowedHosts: "all",
-    static: {
-      publicPath: "/",
-      directory: path.join(__dirname, "dist"),
-    },
-    // compress: true,
-    port: 8081,
+    port: 8080,
     proxy: {
-      "/api": {
-        target: "http://localhost:3000",
-        secure: false,
-        changeOrigin: true,
-      },
-    },
+      '/residents': 'http://localhost:3000',
+      '/instructors': 'http://localhost:3000',
+    }
   },
 };
