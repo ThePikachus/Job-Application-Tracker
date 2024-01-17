@@ -39,11 +39,12 @@ a {
 }
 
 .popup-content {
+  width: 40%;
+  height: 40%;
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 1000px;
   text-align: center;
   z-index: 2;
 }
@@ -107,12 +108,15 @@ a {
 
 ul {
   list-style: none;
+  padding-right: 40px;
 
   li {
     border: 1px solid black;
     padding: 5px;
-    margin: 5px;
+    text-align: center;
+    margin-bottom: 10px;
   }
+  margin-bottom: 50px;
 }
 
 .taskbar {
@@ -180,4 +184,15 @@ button:hover, a:hover {
 
 body {
   background-color: white;
+}
+
+.editUser {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline: 40px;
+  margin-bottom: 0px;
 }

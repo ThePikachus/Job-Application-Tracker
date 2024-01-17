@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setUser } from "../redux/slices/userSlice.js";
+import { useDispatch, useSelector } from "react-redux";
 
-const LoginForm = ({ onClose }) => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({ user: "", password: "" });
+const PasswordForm = ({ onClose }) => {
+  const name = useSelector((state) => state.user.name);
+  const [formData, setFormData] = useState({
+    oldPass: "",
+    newPass: "",
+    name: name,
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,17 +16,13 @@ const LoginForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/login", {
+      await fetch("/login/changePass", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
-      const userData = await response.json();
-      console.log("response", userData);
-      dispatch(setUser(userData));
       onClose();
     } catch (error) {
       console.error("Error during fetch:", error);
@@ -36,16 +35,17 @@ const LoginForm = ({ onClose }) => {
         &times;
       </button>
       <form onSubmit={handleSubmit}>
-        <label>Full Name</label>
+        <label>Old Password</label>
         <input
-          name="user"
-          type="text"
+          name="oldPass"
+          type="password"
+          placeholder="probably 'codesmith'"
           value={formData.user}
           onChange={handleChange}
         />
-        <label>Password</label>
+        <label>New Password</label>
         <input
-          name="password"
+          name="newPass"
           type="password"
           value={formData.password}
           onChange={handleChange}
@@ -56,4 +56,4 @@ const LoginForm = ({ onClose }) => {
   );
 };
 
-export default LoginForm;
+export default PasswordForm;
