@@ -6,7 +6,13 @@ function Taskbar(props) {
   });
   const dispatch = useDispatch();
 
-  const showLogin = ()
+  const showLogin = () => {
+    if (loginPopup) {
+      toggleLoginPopup(false);
+    } else {
+      toggleLoginPopup(true);
+    }
+  };
   return (
     <div className="taskbar">
       <h2>Codesmith ECRI 44</h2>

@@ -1,148 +1,37 @@
 import React from "react";
 import { useState } from "react";
+import { useQuery } from '@tanstack/react-query'
 import Resident from "../components/Resident.jsx";
 import Popup from "../components/Popup.jsx";
 
 function MainContainer() {
-  const profiles = [
-    {
-      name: "John Norlin",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "purple",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi john!", "i hate you john", "get rekt"],
-    },
-    {
-      name: "David Moore",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "blue",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi david!", "i hate you david", "get rekt"],
-    },
-    {
-      name: "Jeffrey Mai",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "green",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi jeffrey!", "i hate you jeffrey", "get rekt"],
-    },
-    {
-      name: "Ezekiel Mohr",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "red",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi ezekiel!", "i hate you ezekiel", "get rekt"],
-    },
-    {
-      name: "Will Sentance",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "black",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi will!", "i hate you will", "get rekt"],
-    },
-    {
-      name: "John Norlin",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "purple",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi john!", "i hate you john", "get rekt"],
-    },
-    {
-      name: "David Moore",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "blue",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi david!", "i hate you david", "get rekt"],
-    },
-    {
-      name: "Jeffrey Mai",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "green",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi jeffrey!", "i hate you jeffrey", "get rekt"],
-    },
-    {
-      name: "Ezekiel Mohr",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "red",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi ezekiel!", "i hate you ezekiel", "get rekt"],
-    },
-    {
-      name: "Will Sentance",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "black",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi will!", "i hate you will", "get rekt"],
-    },
-    {
-      name: "John Norlin",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "purple",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi john!", "i hate you john", "get rekt"],
-    },
-    {
-      name: "David Moore",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "blue",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi david!", "i hate you david", "get rekt"],
-    },
-    {
-      name: "Jeffrey Mai",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "green",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi jeffrey!", "i hate you jeffrey", "get rekt"],
-    },
-    {
-      name: "Ezekiel Mohr",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "red",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi ezekiel!", "i hate you ezekiel", "get rekt"],
-    },
-    {
-      name: "Will Sentance",
-      picture:
-        "https://media.licdn.com/dms/image/D5603AQGifro26yiT9Q/profile-displayphoto-shrink_400_400/0/1704990610950?e=1710979200&v=beta&t=JutT-UbJU2s_SupnU07gScOVjADWDX_MYgbT_A96yCA",
-      backgroundColor: "black",
-      bio: "I like pikachu",
-      pronouns: "he/him",
-      messages: ["hi will!", "i hate you will", "get rekt"],
-    },
-  ];
+  const [profileList, setProfileList] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState(null);
 
+  // const profilesFetcher = async () => {
+  //   const response = await fetch("/residents");
+  //   const data = await response.json();
+  //   console.log(data);
+  //   setProfileList(data);
+  // };
+
+  // const profilesFetcher = async ({ queryKey }) => {
+  //   const [] = queryKey;
+  //   const response = await fetch(`residents`);
+  //   const data = await response.json();
+  //   return data;
+  // };
+  const { data: residentData, isPending: residentIsPending, isError: residentIsError, error: residentError } = useQuery({
+    queryKey: ["residents" ],
+    queryFn: async () => {
+      const response = await fetch('/residents/')
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+        return response.json()
+    },
+  });
+  console.log(data);
   const handleProfileClick = (profile) => {
     console.log("hello", profile);
     setSelectedProfile(profile);
@@ -151,14 +40,17 @@ function MainContainer() {
   const handleClosePopup = () => {
     setSelectedProfile(null);
   };
+  if (isPending) return"loading";
+  if (isError) return error;
   return (
     <div id="MainContainer" className="profile-grid">
-      {profiles.map((profile, index) => (
+      <h1>Residents</h1>
+      {data.map((profile, index) => (
         <Resident
           key={index}
           name={profile.name}
           backgroundColor={profile.backgroundColor}
-          picture={profile.picture}
+          picture={profile.image}
           bio={profile.bio}
           pronouns={profile.pronouns}
           onClick={() => handleProfileClick(profile)}
