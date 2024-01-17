@@ -2,6 +2,9 @@
   "name": "wncrivers",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "20.9"
+  },
   "main": "index.js",
   "scripts": {
     "start": "npm run ./server/server.js",
