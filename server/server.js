@@ -14,13 +14,13 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 //serve static files and the index.html file
-app.use("/", express.static(path.join(__dirname, "../client")));
+app.use("/", express.static(path.join(__dirname, "../dist")));
 
 app.use("/residents", residentsRouter);
 app.use("/instructors", instructorsRouter);
 app.use("/login", loginRouter);
 app.get("/", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "../client/index.html"));
+  res.sendFile(path.resolve(__dirname, "../dist/index.html"));
 });
 
 //serve 404 error to all other unknown routes
