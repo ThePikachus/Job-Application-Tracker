@@ -1,10 +1,28 @@
-#MainContainer .residents-grid,
-.instructors-grid {
+#MainContainer .residents-grid {
   margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   grid-row-gap: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#MainContainer .instructors-grid {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(250px, 1fr));
+  gap: 20px;
+  grid-row-gap: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color from its parent */
+  padding: 10px;
+  font-size: large;
 }
 
 .popup-overlay {
@@ -41,6 +59,10 @@
   font-size: 20px;
   cursor: pointer;
   color: white;
+}
+
+#MainContainer h1{
+  padding-top: 20px;
 }
 
 .resident,
@@ -100,7 +122,8 @@ ul {
 .taskbar {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 5px;
+  background-color: grey;
 }
 
 .taskbar .title {
@@ -116,10 +139,12 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .congratulation #logo {
-  padding-right: 10px;
+  margin-right: 10px;
+  border-radius: 30%;
 }
 
 h2 {
@@ -132,9 +157,10 @@ button {
 
   cursor: pointer;
   padding: 10px;
+  font-size: large;
 }
 
-button:hover {
+button:hover, a:hover {
   background-color: #555;
   transition: background-color 0.3s ease;
 }
@@ -152,12 +178,12 @@ button:hover {
 }
 
 .profile-grid {
-  background-color: #8e8579;
+  background-color: #007dff;
   border-radius: 3%;
 }
 
 body {
-  background-color: #544e46;
+  background-color: white;
 }
 
 .editUser {
