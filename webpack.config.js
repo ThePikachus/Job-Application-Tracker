@@ -16,6 +16,29 @@ module.exports = {
 
   module: {
     rules: [
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       presets: ["@babel/preset-env", "@babel/preset-react"],
+      //     },
+      //   },
+      // },
+      // {
+      //   test: /.(css|scss)$/,
+      //   exclude: /node_modules/,
+      //   use: ["style-loader", "css-loader"],
+      // },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //     },
+      //   ],
+      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -27,15 +50,21 @@ module.exports = {
         },
       },
       {
-        test: /.(css|scss)$/,
+        test: /\.(css|scss)$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
         use: [
+          "style-loader",
           {
-            loader: "file-loader",
+            loader: "css-loader",
+            options: {
+              sourceMap: true, // Enable source maps for easier debugging
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true, // Enable source maps for easier debugging
+            },
           },
         ],
       },
