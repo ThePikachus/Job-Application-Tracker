@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm.jsx";
+import PasswordForm from "./PasswordForm.jsx";
 
 function Taskbar(props) {
   const user = useSelector((state) => state.user);
@@ -14,6 +15,10 @@ function Taskbar(props) {
   const showLogin = () => {
     toggleLoginPopup(!loginPopup);
   };
+  const [passPopup, togglePassPopup] = useState(false);
+  const showPassword = () => {
+    togglePassPopup(!passPopup);
+  };
   return (
     <div className="taskbar">
       <div className="title">
@@ -23,12 +28,14 @@ function Taskbar(props) {
       <div className="features">
         <button>Residents</button>
         <button>Instructors</button>
+        {showUser && <h2>{user.name}</h2>}
         {showUser ? (
-          <h2>{user.name}</h2>
+          <button onClick={showPassword}>Change Password</button>
         ) : (
           <button onClick={showLogin}>Log In</button>
         )}
         {loginPopup && <LoginForm onClose={showLogin} />}
+        {passPopup && <PasswordForm onClose={showPassword} />}
       </div>
     </div>
   );

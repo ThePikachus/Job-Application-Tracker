@@ -40,32 +40,29 @@ function Edit() {
 
   return (
     <div>
-      <form className="commentInput">
+      <form className="editUser">
+        <input
+          type="text"
+          placeholder="set your background color to any valid CSS color!"
+          value={colorText}
+          onChange={(e) => setcolorText(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Express yourself with a bio phrase!"
+          value={bioText}
+          onChange={(e) => setbioText(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Let us know your pronouns!"
+          value={pronounText}
+          onChange={(e) => setpronounText(e.target.value)}
+        />
         <button type="submit" onClick={applyEdit}>
           Apply
         </button>
       </form>
-      <input
-        className="commentInput"
-        type="text"
-        placeholder="Type something..."
-        value={colorText}
-        onChange={(e) => setcolorText(e.target.value)}
-      />
-      <input
-        className="commentInput"
-        type="text"
-        placeholder="Type something..."
-        value={bioText}
-        onChange={(e) => setbioText(e.target.value)}
-      />
-      <input
-        className="commentInput"
-        type="text"
-        placeholder="Type something..."
-        value={pronounText}
-        onChange={(e) => setpronounText(e.target.value)}
-      />
     </div>
   );
 }
