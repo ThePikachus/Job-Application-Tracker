@@ -65,7 +65,7 @@ peopleController.getOneInstructor = (req, res, next) => {
 peopleController.addPost = (req, res, next) => {
   const { post, name } = req.body;
   const queryString = `UPDATE residents
-  SET comments = array_append(comments, '${post}')
+  SET comments = array_append(comments, '${post} - ${name}')
   WHERE name = '${name}';`;
   db.query(queryString).then((data) => {
     res.locals.post = post;
