@@ -6,13 +6,20 @@ import Resident from "../components/Resident.jsx";
 import Instructor from "../components/Instructor.jsx";
 import Popup from "../components/Popup.jsx";
 
+
+const setData = () => {
+  queryClient.setQueryData('residents', (data) => {
+    
+  })
+}
+
 function MainContainer() {
   const [residentList, setResidentList] = useState([]);
   const [instructorList, setInstructorList] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState(null);
 
   const { data: residentData, isPending: residentIsPending, isError: residentIsError, error: residentError } = useQuery({
-    queryKey: ['residents'],
+    queryKey: 'residents',
     queryFn: async () => {
       const response = await axios.get('/residents');
       return response.data
