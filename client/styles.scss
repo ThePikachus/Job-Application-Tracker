@@ -1,8 +1,10 @@
-.profile-grid {
+#MainContainer .residents-grid,
+.instructors-grid {
   margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  grid-row-gap: 40px;
 }
 
 .popup-overlay {
@@ -15,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 }
 
 .popup-content {
@@ -24,6 +27,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 1000px;
   text-align: center;
+  z-index: 2;
 }
 
 .close-button {
@@ -38,21 +42,25 @@
   color: white;
 }
 
-.resident {
+.resident,
+.instructor {
   position: relative;
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
 }
 
-.resident-card {
+.resident-card,
+.instructor-card {
   border: 5px solid white;
   display: flex;
+  justify-content: center;
   height: 120%;
 }
 
-.resident-card .resident-text {
-  transform: translate(0, 25%);
+.resident-text,
+.instructor-text {
+  transform: translate(0, 30%);
   .pronouns {
     font-style: normal;
     margin-bottom: 5px;
@@ -63,7 +71,8 @@
   font-style: italic;
 }
 
-.resident #pic {
+.resident #pic,
+.instructor #pic {
   width: 130px;
   height: 130px;
   border-radius: 1000px;
@@ -87,8 +96,26 @@ ul {
 .taskbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 20px;
+}
+
+.taskbar .title {
+  justify-content: flex-start;
+  margin-right: auto;
+}
+
+.taskbar .features {
+  justify-content: space-between;
+}
+
+.congratulation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.congratulation #logo {
+  padding-right: 10px;
 }
 
 h2 {
@@ -106,4 +133,25 @@ button {
 button:hover {
   background-color: #555;
   transition: background-color 0.3s ease;
+}
+
+.commentInput {
+  z-index: 1;
+}
+
+.instructors {
+  text-align: center;
+}
+
+.residents {
+  text-align: center;
+}
+
+.profile-grid {
+  background-color: #8e8579;
+  border-radius: 3%;
+}
+
+body {
+  background-color: #544e46;
 }

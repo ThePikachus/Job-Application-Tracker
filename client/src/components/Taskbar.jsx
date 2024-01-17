@@ -1,19 +1,35 @@
-import React from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import LoginForm from "./LoginForm.jsx";
+
 function Taskbar(props) {
-  const user = useSelector((state) => {
-    return state.user;
-  });
+  const user = useSelector((state) => state.user);
+  console.log("this is user", user);
+
+  const showUser = useSelector((state) => state.user && state.user.name);
+
   const dispatch = useDispatch();
 
-  const showLogin = ()
+  const [loginPopup, toggleLoginPopup] = useState(false);
+  const showLogin = () => {
+    toggleLoginPopup(!loginPopup);
+  };
   return (
     <div className="taskbar">
-      <h2>Codesmith ECRI 44</h2>
+      <div className="title">
+        <h2>Codesmith ECRI 44</h2>
+      </div>
       {/* style to have top header on left and residents and instructors on right I have no idea howta do that grid or flux */}
-      <button>Residents</button>
-      <button>Instructors</button>
-      {user ? <h2>{user.name}</h2> : <button onClick={showLogin}>Log In</button>}
+      <div className="features">
+        <button>Residents</button>
+        <button>Instructors</button>
+        {showUser ? (
+          <h2>{user.name}</h2>
+        ) : (
+          <button onClick={showLogin}>Log In</button>
+        )}
+        {loginPopup && <LoginForm onClose={showLogin} />}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Resident({
+function Instructor({
   key,
   name,
   backgroundColor,
@@ -18,10 +18,15 @@ function Resident({
     cursor: "pointer",
   };
   return (
-    <div className="resident">
-      <img id="pic" src={picture} alt="your mom"></img>
-      <div key={key} className="resident-card" onClick={onClick} style={style}>
-        <div className="resident-text">
+    <div className="instructor">
+      <img id="pic" src={picture}></img>
+      <div
+        key={key}
+        className="instructor-card"
+        onClick={onClick}
+        style={style}
+      >
+        <div className="instructor-text">
           <h3 id="name">{name}</h3>
           <div className="pronouns">{pronouns}</div>
           <div className="bio">{bio}</div>
@@ -31,4 +36,4 @@ function Resident({
   );
 }
 
-export default Resident;
+export default Instructor;

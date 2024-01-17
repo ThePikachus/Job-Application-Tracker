@@ -15,7 +15,7 @@ function Input({ name }) {
     };
 
     try {
-      const response = await fetch("post request url", {
+      const response = await fetch("/residents/addPost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,12 +35,13 @@ function Input({ name }) {
 
   return (
     <div>
-      <form>
+      <form className="commentInput">
         <button type="submit" onClick={handlePost}>
           Post
         </button>
       </form>
       <input
+        className="commentInput"
         type="text"
         placeholder="Type something..."
         value={inputText}
