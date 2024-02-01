@@ -7,8 +7,8 @@ import Instructor from "../components/Instructor.jsx";
 import Popup from "../components/Popup.jsx";
 
 async function fetchResidents() {
-  const response = await axios.get("/residents");
-  return response.data;
+  const res = await axios.get("/residents");
+  return res.data;
 }
 
 async function fetchInstructors() {
@@ -27,7 +27,6 @@ function fetchInstructors() {
 
 
 function MainContainer() {
-
   const residents = useResidents();
   const instructors = fetchInstructors();
   console.log("this is residents", residentData);
