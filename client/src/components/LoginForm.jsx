@@ -2,12 +2,32 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/slices/userSlice.js";
 
+async function signIn() {
+  const res = await axios.post("/login");
+  return res.data;
+}
+
+function useSignIn() {
+  return useQuery({ queryKey: ["login"], queryFn: fetchResidents});
+}
+
+
+
 const LoginForm = ({ onClose }) => {
   const [formData, setFormData] = useState({ user: "", password: "" });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleNameChange = (e) => {
+    setFormData({ 
+      ...formData, 
+      [e.target.name]: e.target.value 
+    });
+  }
+  const handlePassChange = (e) => {
+    setFormData({ 
+      ...formData, 
+      [e.target.name]: e.target.value 
+    });
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,14 +60,14 @@ const LoginForm = ({ onClose }) => {
           name="user"
           type="text"
           value={formData.user}
-          onChange={handleChange}
+          onChange={handleNameChange}
         />
         <label>Password</label>
         <input
           name="password"
           type="password"
           value={formData.password}
-          onChange={handleChange}
+          onChange={handlePassChange}
         />
         <button type="submit">Login</button>
       </form>
