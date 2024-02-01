@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +10,6 @@ const loginRouter = require("./routers/loginRouter.js");
 app.use(express.json());
 
 //Accept requests from any domain - to be updated
-app.use(cors({ origin: "*" }));
 
 //serve static files and the index.html file
 app.use("/", express.static(path.join(__dirname, "../dist")));

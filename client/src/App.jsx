@@ -5,11 +5,11 @@ import Congratulation from "./components/Congratulation.jsx";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import "../styles.scss";
 
-const queryClient = new QueryClient();
+const client = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={client}>
       <div id="AppContainer">
         <Taskbar />
         <Congratulation />

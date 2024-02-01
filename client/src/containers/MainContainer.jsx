@@ -10,19 +10,26 @@ async function fetchResidents() {
   const response = await axios.get("/residents");
   return response.data;
 }
+
 async function fetchInstructors() {
   const response = await axios.get("/instructors/");
   return response.data
 }
+
+
 function useResidents() {
-  return useQuery({ queryKey: ["residents"], queryFn: fetchResidentData});
+  return useQuery({ queryKey: ["residents"], queryFn: fetchResidents});
 }
+
 function fetchInstructors() {
   return useQuery({ queryKey: ["instructors"], queryFn: fetchInstructors });
 }
+
+
 function MainContainer() {
 
   const residents = useResidents();
+  const instructors = fetchInstructors();
   console.log("this is residents", residentData);
   console.log("this is pending: ", residentIsPending);
 
