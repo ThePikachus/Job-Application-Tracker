@@ -1,28 +1,28 @@
-import React from "react";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Resident from "../components/Resident.jsx";
-import Instructor from "../components/Instructor.jsx";
-import Popup from "../components/Popup.jsx";
+import React from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Resident from '../components/Resident.jsx';
+import Instructor from '../components/Instructor.jsx';
+import Popup from '../components/Popup.jsx';
 
 async function fetchResidents() {
-  const res = await axios.get("/residents");
+  const res = await axios.get('/residents');
   return res.data;
 }
 
 async function fetchInstructors() {
-  const res = await axios.get("/instructors/");
+  const res = await axios.get('/instructors/');
   return res.data;
 }
 
 
 function useResidents() {
-  return useQuery({ queryKey: ["residents"], queryFn: fetchResidents});
+  return useQuery({ queryKey: ['residents'], queryFn: fetchResidents});
 }
 
 function useInstructors() {
-  return useQuery({ queryKey: ["instructors"], queryFn: fetchInstructors });
+  return useQuery({ queryKey: ['instructors'], queryFn: fetchInstructors });
 }
 
 
@@ -30,21 +30,21 @@ function MainContainer() {
   const residents = useResidents();
   const instructors = useInstructors();
   const [userName, setUserName] = useState(null);
-  console.log("this is residents", residentData);
-  console.log("this is pending: ", residentIsPending);
+  console.log('this is residents', residentData);
+  console.log('this is pending: ', residentIsPending);
 
-  console.log("this is our instructors", instructorData);
+  console.log('this is our instructors', instructorData);
 
   const handleClosePopup = () => {
     setUserName(null);
   };
   return (
-    <div id="MainContainer" className="profile-grid">
-      <div className="residents" id="residents">
+    <div id='MainContainer' className='profile-grid'>
+      <div className='residents' id='residents'>
         <h1>Residents</h1>
-        <div className="residents-grid">
+        <div className='residents-grid'>
           {residentIsPending
-            ? "laoding"
+            ? 'laoding'
             : residentIsError
             ? residentError
             : residentData?.map((profile, index) => (
@@ -61,11 +61,11 @@ function MainContainer() {
         </div>
       </div>
 
-      <div className="instructors" id="instructors">
+      <div className='instructors' id='instructors'>
         <h1>Instructors</h1>
-        <div className="instructors-grid">
+        <div className='instructors-grid'>
           {instructorIsPending
-            ? "loading"
+            ? 'loading'
             : instructorIsError
             ? instructorError
             : instructorData?.map((profile, index) => (
