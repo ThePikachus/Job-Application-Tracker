@@ -4,21 +4,12 @@ import LoginForm from "./LoginForm.jsx";
 import PasswordForm from "./PasswordForm.jsx";
 
 function Taskbar(props) {
-  const user = useSelector((state) => state.user);
-  console.log("this is user", user);
-
-  const showUser = useSelector((state) => state.user && state.user.name);
-
-  const dispatch = useDispatch();
+  // const user = useSelector((state) => state.user);
+  // console.log("this is user", user);
+  // const showUser = useSelector((state) => state.user && state.user.name);
 
   const [loginPopup, toggleLoginPopup] = useState(false);
-  const showLogin = () => {
-    toggleLoginPopup(!loginPopup);
-  };
   const [passPopup, togglePassPopup] = useState(false);
-  const showPassword = () => {
-    togglePassPopup(!passPopup);
-  };
   return (
     <div className="taskbar">
       <div className="title">
@@ -30,9 +21,9 @@ function Taskbar(props) {
         <a href='#instructors'>Instructors</a>
         {showUser && <h2>{user.name}</h2>}
         {showUser ? (
-          <button onClick={showPassword}>Change Password</button>
+          <button onClick={() => togglePassPopup(!passPopup)}>Change Password</button>
         ) : (
-          <button onClick={showLogin}>Log In</button>
+          <button onClick={() => toggleLoginPopup(!loginPopup)}>Log In</button>
         )}
         {loginPopup && <LoginForm onClose={showLogin} />}
         {passPopup && <PasswordForm onClose={showPassword} />}

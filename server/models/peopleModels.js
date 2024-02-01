@@ -100,7 +100,7 @@ const pool = new Pool({
 
 //   for(const key of residents){
 //     const values = [key.name, "", [], key.img, "", "codesmith", "white"]
-//     console.log(values);
+//     // console.log(values);
 //     // Insert data only if it doesn't already exist
 //     try {
 //       await pool.query(insertResidentDataQuery, values);
@@ -127,11 +127,11 @@ const pool = new Pool({
 
 //   return;
 // }
-// // startDb();
+// startDb();
 
 module.exports = {
   query: (text, params, callback) => {
-    console.log('executed query', text);
+    // console.log('executed query', text);
     return pool.query(text, params, callback);
   }
 };

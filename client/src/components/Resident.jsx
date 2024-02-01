@@ -1,13 +1,11 @@
 import React from "react";
 
 function Resident({
-  key,
   name,
   backgroundColor,
   picture,
   bio,
   pronouns,
-  onClick,
 }) {
   const style = {
     backgroundColor: backgroundColor,
@@ -25,9 +23,14 @@ function Resident({
   return (
     <div className="resident">
       <img id="pic" src={picture} alt="your mom"></img>
-      <div key={key} className="resident-card" onClick={onClick} style={style}>
+      <div
+        className="resident-card" 
+        onClick={() => setUserName(["residents", name])} 
+        style={style}
+      >
         <div className="resident-text">
           <h3 id="name">{name}</h3>
+          {pronouns && <div className="pronouns">{pronouns}</div>}
           <p className="bio">{bio}</p>
         </div>
       </div>

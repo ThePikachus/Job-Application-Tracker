@@ -12,8 +12,8 @@ async function fetchResidents() {
 }
 
 async function fetchInstructors() {
-  const response = await axios.get("/instructors/");
-  return response.data
+  const res = await axios.get("/instructors/");
+  return res.data;
 }
 
 
@@ -21,26 +21,22 @@ function useResidents() {
   return useQuery({ queryKey: ["residents"], queryFn: fetchResidents});
 }
 
-function fetchInstructors() {
+function useInstructors() {
   return useQuery({ queryKey: ["instructors"], queryFn: fetchInstructors });
 }
 
 
 function MainContainer() {
   const residents = useResidents();
-  const instructors = fetchInstructors();
+  const instructors = useInstructors();
+  const [userName, setUserName] = useState(null);
   console.log("this is residents", residentData);
   console.log("this is pending: ", residentIsPending);
 
   console.log("this is our instructors", instructorData);
-  
-  const handleProfileClick = (profile) => {
-    console.log("hello", profile);
-    setSelectedProfile(profile);
-  };
 
   const handleClosePopup = () => {
-    setSelectedProfile(null);
+    setUserName(null);
   };
   return (
     <div id="MainContainer" className="profile-grid">
@@ -53,7 +49,7 @@ function MainContainer() {
             ? residentError
             : residentData?.map((profile, index) => (
                 <Resident
-                  key={index}
+                  key={`${profile.name}${index}`}
                   name={profile.name}
                   backgroundColor={profile.background_color}
                   picture={profile.image}
@@ -74,7 +70,7 @@ function MainContainer() {
             ? instructorError
             : instructorData?.map((profile, index) => (
                 <Instructor
-                  key={index}
+                  key={`${profile.name}${index}`}
                   name={profile.name}
                   backgroundColor={profile.background_color}
                   picture={profile.image}
@@ -86,8 +82,8 @@ function MainContainer() {
         </div>
       </div>
 
-      {selectedProfile && (
-        <Popup profile={selectedProfile} onClose={handleClosePopup} />
+      {userName && (
+        <Popup profile={userName} onClose={handleClosePopup} />
       )}
     </div>
   );

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../redux/slices/userSlice.js";
 
 const LoginForm = ({ onClose }) => {
-  const dispatch = useDispatch();
   const [formData, setFormData] = useState({ user: "", password: "" });
 
   const handleChange = (e) => {

@@ -3,7 +3,7 @@ const db = require("../models/peopleModels.js");
 const peopleController = {};
 
 peopleController.getResidents = (req, res, next) => {
-  const queryString = "SELECT r.* from residents r";
+  const queryString = "SELECT name image phrase background_color from residents";
   db.query(queryString)
     .then((data) => {
       res.locals.residents = data.rows;
@@ -15,7 +15,7 @@ peopleController.getResidents = (req, res, next) => {
 };
 
 peopleController.getOneResident = (req, res, next) => {
-  const queryString = "SELECT r.* from residents r WHERE name = $1";
+  const queryString = "SELECT * from residents  WHERE name = $1";
   const name = req.params.name
     .split(" ")
     .map((word) => word[0].toUpperCase() + word.slice(1))
@@ -34,7 +34,7 @@ peopleController.getOneResident = (req, res, next) => {
 };
 
 peopleController.getInstructors = (req, res, next) => {
-  const queryString = "SELECT i.* from instructors i";
+  const queryString = "SELECT name image phrase background_color from instructors";
   db.query(queryString)
     .then((data) => {
       res.locals.instructors = data.rows;
@@ -46,7 +46,7 @@ peopleController.getInstructors = (req, res, next) => {
 };
 
 peopleController.getOneInstructor = (req, res, next) => {
-  const queryString = "SELECT i.* from instructors i WHERE name = $1";
+  const queryString = "SELECT * from instructors  WHERE name = $1";
   const name = req.params.name
     .split(" ")
     .map((word) => word[0].toUpperCase() + word.slice(1))

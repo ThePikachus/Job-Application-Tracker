@@ -1,13 +1,11 @@
 import React from "react";
 
 function Instructor({
-  key,
   name,
   backgroundColor,
   picture,
   bio,
   pronouns,
-  onClick,
 }) {
   const style = {
     backgroundColor: backgroundColor,
@@ -26,15 +24,14 @@ function Instructor({
     <div className="instructor">
       <img id="pic" src={picture}></img>
       <div
-        key={key}
         className="instructor-card"
-        onClick={onClick}
+        onClick={() => setUserName(["instructors", name])} 
         style={style}
       >
         <div className="instructor-text">
           <h3 id="name">{name}</h3>
-          <div className="pronouns">{pronouns}</div>
-          <div className="bio">{bio}</div>
+          {pronouns && <div className="pronouns">{pronouns}</div>}
+          <p className="bio">{bio}</p>
         </div>
       </div>
     </div>
