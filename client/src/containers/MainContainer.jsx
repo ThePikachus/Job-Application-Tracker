@@ -6,39 +6,28 @@ import Resident from "../components/Resident.jsx";
 import Instructor from "../components/Instructor.jsx";
 import Popup from "../components/Popup.jsx";
 
+async function fetchResidents() {
+  const response = await axios.get("/residents");
+  return response.data;
+}
+async function fetchInstructors() {
+  const response = await axios.get("/instructors/");
+  return response.data
+}
+function useResidents() {
+  return useQuery({ queryKey: ["residents"], queryFn: fetchResidentData});
+}
+function fetchInstructors() {
+  return useQuery({ queryKey: ["instructors"], queryFn: fetchInstructors });
+}
 function MainContainer() {
-  const [residentList, setResidentList] = useState([]);
-  const [instructorList, setInstructorList] = useState([]);
-  const [selectedProfile, setSelectedProfile] = useState(null);
 
-  const {
-    data: residentData,
-    isPending: residentIsPending,
-    isError: residentIsError,
-    error: residentError,
-  } = useQuery({
-    queryKey: ["residents"],
-    queryFn: async () => {
-      const response = await axios.get("/residents");
-      return response.data;
-    },
-  });
+  const residents = useResidents();
   console.log("this is residents", residentData);
   console.log("this is pending: ", residentIsPending);
-  const {
-    data: instructorData,
-    isPending: instructorIsPending,
-    isError: instructorIsError,
-    error: instructorError,
-  } = useQuery({
-    queryKey: ["instructors"],
-    queryFn: async () => {
-      const response = await axios.get("/instructors/");
-      return response.data;
-    },
-  });
-  console.log("this is our instructors", instructorData);
 
+  console.log("this is our instructors", instructorData);
+  
   const handleProfileClick = (profile) => {
     console.log("hello", profile);
     setSelectedProfile(profile);
