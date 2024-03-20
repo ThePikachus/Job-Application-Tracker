@@ -6,6 +6,8 @@ function Resident({
   picture,
   bio,
   pronouns,
+  clickPopupFunc,
+  setUserPopupInfo,
 }) {
   const style = {
     backgroundColor: backgroundColor,
@@ -25,7 +27,7 @@ function Resident({
       <img id='pic' src={picture} alt='your mom'></img>
       <div
         className='resident-card' 
-        // onClick={() => setUserName(['residents', name])} 
+        onClick={clickPopupFunc} 
         style={style}
       >
         <div className='resident-text'>

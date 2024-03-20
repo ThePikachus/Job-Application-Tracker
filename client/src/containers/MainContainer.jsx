@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Resident from '../components/Resident.jsx';
 import Instructor from '../components/Instructor.jsx';
-// import Popup from '../components/Popup.jsx';
+import Popup from '../components/Popup.jsx';
 
 async function fetchResidents() {
   const res = await axios.get('/residents');
@@ -25,19 +25,25 @@ function useInstructors() {
   return useQuery({ queryKey: ['instructors'], queryFn: fetchInstructors });
 }
 
+function handleProfileClick(profile) {
+  console.log('hi we clicked it with: ', profile);
+  setUserPopupInfo(null);
+
+}
+
 // residents
 function MainContainer() {
   const {isLoading: residentIsPending, isError: residentIsError, data: residentData, error: residentError } = useResidents();
   const {isLoading: instructorIsPending, isError: instructorIsError, data: instructorData, error: instructorError } = useInstructors();
-  // const [userName, setUserName] = useState(null);
+  const [userPopupInfo, setUserPopupInfo] = useState(null);
   console.log('this is residents: ', residentData);
   console.log('this is residents pending: ', residentIsPending);
-
   console.log('this is our instructors', instructorData);
+  console.log('this is user popup info: ', userPopupInfo);
 
-  // const handleClosePopup = () => {
-  //   setUserName(null);
-  // };
+  const handleClosePopup = () => {
+    setUserPopupInfo(null);
+  };
   return (
     <div id='MainContainer' className='profile-grid'>
       <div className='residents' id='residents'>
@@ -50,12 +56,13 @@ function MainContainer() {
             : residentData?.map((profile, index) => (
                 <Resident
                   key={`${profile.name}${index}`}
+                  setUserPopupInfo={setUserPopupInfo}
                   name={profile.name}
                   backgroundColor={profile.background_color}
                   picture={profile.image}
                   bio={profile.phrase}
                   pronouns={profile.pronouns}
-                  // onClick={() => handleProfileClick(profile)}
+                  onClick={handleProfileClick}
                 />
               ))
               }
@@ -72,21 +79,22 @@ function MainContainer() {
             : instructorData?.map((profile, index) => (
                 <Instructor
                   key={`${profile.name}${index}`}
+                  setUserPopupInfo={setUserPopupInfo}
                   name={profile.name}
                   backgroundColor={profile.background_color}
                   picture={profile.image}
                   bio={profile.phrase}
                   pronouns={profile.pronouns}
-                  // onClick={() => handleProfileClick(profile)}
+                  onClick={handleProfileClick}
                 />
               ))
               }
         </div>
       </div>
-{/* 
-      {userName && (
-        <Popup profile={userName} onClose={handleClosePopup} />
-      )} */}
+
+      {userPopupInfo && (
+        <Popup profile={userPopupInfo} onClose={handleClosePopup} />
+      )}
     </div>
   );
 }

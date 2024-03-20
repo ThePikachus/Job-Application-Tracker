@@ -6,6 +6,8 @@ function Instructor({
   picture,
   bio,
   pronouns,
+  clickPopupFunc,
+  setUserPopupInfo,
 }) {
   const style = {
     backgroundColor: backgroundColor,
@@ -25,7 +27,7 @@ function Instructor({
       <img id='pic' src={picture}></img>
       <div
         className='instructor-card'
-        // onClick={() => setUserName(['instructors', name])} 
+        onClick={() => clickPopupFunc} 
         style={style}
       >
         <div className='instructor-text'>
