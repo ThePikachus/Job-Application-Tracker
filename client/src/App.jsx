@@ -12,11 +12,11 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <div id='AppContainer'>
-        <Taskbar />
-        <Congratulation />
+        {/* <Taskbar />
+        <Congratulation /> */}
         <MainContainer />
       </div>
-      <ReactQueryDevtools initialIsOpen />
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   );
 }

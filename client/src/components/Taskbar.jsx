@@ -25,8 +25,8 @@ function Taskbar(props) {
         ) : (
           <button onClick={() => toggleLoginPopup(!loginPopup)}>Log In</button>
         )}
-        {loginPopup && <LoginForm onClose={showLogin} />}
-        {passPopup && <PasswordForm onClose={showPassword} />}
+        {/* {loginPopup && <LoginForm onClose={showLogin} />}
+        {passPopup && <PasswordForm onClose={showPassword} />} */}
       </div>
     </div>
   );

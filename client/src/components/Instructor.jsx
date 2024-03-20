@@ -25,7 +25,7 @@ function Instructor({
       <img id='pic' src={picture}></img>
       <div
         className='instructor-card'
-        onClick={() => setUserName(['instructors', name])} 
+        // onClick={() => setUserName(['instructors', name])} 
         style={style}
       >
         <div className='instructor-text'>

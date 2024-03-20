@@ -3,7 +3,7 @@ const db = require("../models/peopleModels.js");
 const peopleController = {};
 
 peopleController.getResidents = (req, res, next) => {
-  const queryString = "SELECT name image phrase background_color from residents";
+  const queryString = "SELECT name, image, phrase, pronouns, background_color FROM residents;";
   db.query(queryString)
     .then((data) => {
       res.locals.residents = data.rows;
@@ -34,7 +34,7 @@ peopleController.getOneResident = (req, res, next) => {
 };
 
 peopleController.getInstructors = (req, res, next) => {
-  const queryString = "SELECT name image phrase background_color from instructors";
+  const queryString = "SELECT name, image, phrase, pronouns, background_color from instructors";
   db.query(queryString)
     .then((data) => {
       res.locals.instructors = data.rows;

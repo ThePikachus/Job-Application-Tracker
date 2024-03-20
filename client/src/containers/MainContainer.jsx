@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Resident from '../components/Resident.jsx';
 import Instructor from '../components/Instructor.jsx';
-import Popup from '../components/Popup.jsx';
+// import Popup from '../components/Popup.jsx';
 
 async function fetchResidents() {
   const res = await axios.get('/residents');
@@ -25,26 +25,26 @@ function useInstructors() {
   return useQuery({ queryKey: ['instructors'], queryFn: fetchInstructors });
 }
 
-
+// residents
 function MainContainer() {
-  const residents = useResidents();
-  const instructors = useInstructors();
-  const [userName, setUserName] = useState(null);
-  console.log('this is residents', residentData);
-  console.log('this is pending: ', residentIsPending);
+  const {isLoading: residentIsPending, isError: residentIsError, data: residentData, error: residentError } = useResidents();
+  const {isLoading: instructorIsPending, isError: instructorIsError, data: instructorData, error: instructorError } = useInstructors();
+  // const [userName, setUserName] = useState(null);
+  console.log('this is residents: ', residentData);
+  console.log('this is residents pending: ', residentIsPending);
 
   console.log('this is our instructors', instructorData);
 
-  const handleClosePopup = () => {
-    setUserName(null);
-  };
+  // const handleClosePopup = () => {
+  //   setUserName(null);
+  // };
   return (
     <div id='MainContainer' className='profile-grid'>
       <div className='residents' id='residents'>
         <h1>Residents</h1>
         <div className='residents-grid'>
           {residentIsPending
-            ? 'laoding'
+            ? 'loading'
             : residentIsError
             ? residentError
             : residentData?.map((profile, index) => (
@@ -55,9 +55,10 @@ function MainContainer() {
                   picture={profile.image}
                   bio={profile.phrase}
                   pronouns={profile.pronouns}
-                  onClick={() => handleProfileClick(profile)}
+                  // onClick={() => handleProfileClick(profile)}
                 />
-              ))}
+              ))
+              }
         </div>
       </div>
 
@@ -76,15 +77,16 @@ function MainContainer() {
                   picture={profile.image}
                   bio={profile.phrase}
                   pronouns={profile.pronouns}
-                  onClick={() => handleProfileClick(profile)}
+                  // onClick={() => handleProfileClick(profile)}
                 />
-              ))}
+              ))
+              }
         </div>
       </div>
-
+{/* 
       {userName && (
         <Popup profile={userName} onClose={handleClosePopup} />
-      )}
+      )} */}
     </div>
   );
 }

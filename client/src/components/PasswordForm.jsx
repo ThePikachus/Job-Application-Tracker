@@ -39,7 +39,7 @@ const PasswordForm = ({ onClose }) => {
         <input
           name='oldPass'
           type='password'
-          placeholder='probably 'codesmith''
+          placeholder='probably codesmith'
           value={formData.user}
           onChange={handleChange}
         />

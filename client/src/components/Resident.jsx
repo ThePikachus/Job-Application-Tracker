@@ -17,7 +17,7 @@ function Resident({
   };
 
   if (bio === 'undefined') bio = ' ';
-  if (pronouns === 'undefined') name = name;
+  if (pronouns === 'undefined') pronouns = '';
   else if (pronouns !== '') name = name + ` (${pronouns})`;
 
   return (
@@ -25,7 +25,7 @@ function Resident({
       <img id='pic' src={picture} alt='your mom'></img>
       <div
         className='resident-card' 
-        onClick={() => setUserName(['residents', name])} 
+        // onClick={() => setUserName(['residents', name])} 
         style={style}
       >
         <div className='resident-text'>
